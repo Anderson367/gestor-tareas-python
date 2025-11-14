@@ -7,13 +7,13 @@ tareas = []
 def cargar_tareas():
     global tareas
     try:
-        with open("tareas.json", "r") as archivo:
+        with open("Gestor de tareas/tareas.json", "r") as archivo:
             tareas = json.load(archivo)
     except FileNotFoundError:
         tareas = []
 
 def guardar_tareas():
-    with open("tareas.json", "w") as archivo:
+    with open("Gestor de tareas/tareas.json", "w") as archivo:
         json.dump(tareas, archivo)
 
 def agregar_tarea():

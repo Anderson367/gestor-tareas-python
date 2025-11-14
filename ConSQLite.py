@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter import messagebox
 
 def crear_tabla():
-    conn = sqlite3.connect("tareas.db")
+    conn = sqlite3.connect("Gestor de tareas/tareas.db")
     cursor = conn.cursor()
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS tareas (
@@ -16,7 +16,7 @@ def crear_tabla():
     conn.close()
 
 def agregar_tarea(desc):
-    conn = sqlite3.connect("tareas.db")
+    conn = sqlite3.connect("Gestor de tareas/tareas.db")
     cursor = conn.cursor()
     cursor.execute("INSERT INTO tareas (descripcion) VALUES (?)", (desc,))
     conn.commit()
@@ -24,7 +24,7 @@ def agregar_tarea(desc):
     actualizar_lista()
 
 def listar_tareas():
-    conn = sqlite3.connect("tareas.db")
+    conn = sqlite3.connect("Gestor de tareas/tareas.db")
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM tareas")
     datos = cursor.fetchall()
@@ -32,7 +32,7 @@ def listar_tareas():
     return datos
 
 def completar_tarea(id_tarea):
-    conn = sqlite3.connect("tareas.db")
+    conn = sqlite3.connect("Gestor de tareas/tareas.db")
     cursor = conn.cursor()
     cursor.execute("UPDATE tareas SET completada=1 WHERE id=?", (id_tarea,))
     conn.commit()
@@ -40,7 +40,7 @@ def completar_tarea(id_tarea):
     actualizar_lista()
 
 def eliminar_tarea(id_tarea):
-    conn = sqlite3.connect("tareas.db")
+    conn = sqlite3.connect("Gestor de tareas/tareas.db")
     cursor = conn.cursor()
     cursor.execute("DELETE FROM tareas WHERE id=?", (id_tarea,))
     conn.commit()
